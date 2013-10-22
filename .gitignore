@@ -3,3 +3,4 @@
 
 /pkg/*
 /.travis/*
+/spec/fixtures
