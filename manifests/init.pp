@@ -201,17 +201,13 @@ define account(
   if $ssh_keys != undef {
     validate_hash($ssh_keys)
 
-    $overrides = {
+    $defaults = {
       ensure => $ensure,
       user   => $username,
+      type => 'ssh-rsa',
     }
 
-    $defaults = {
-      type => 'ssh-rsa'
-    }
-
-    $keys = merge($ssh_keys, $overrides)
-    create_resources('ssh_authorized_key', $keys, $defaults)
+    create_resources('ssh_authorized_key', $ssh_keys, $defaults)
   }
 }
 
