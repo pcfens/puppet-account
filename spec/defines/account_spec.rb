@@ -160,11 +160,26 @@ describe 'account' do
     }}
 
     it do
-      should contain_ssh_authorized_key( 'key1' ).with({ 'key' => 'asdf' })
+      should contain_ssh_authorized_key( 'user-key1' ).with({ 'key' => 'asdf' })
     end
 
     it do
-      should contain_ssh_authorized_key( 'key2' ).with({ 'key' => 'sdfg' })
+      should contain_ssh_authorized_key( 'user-key2' ).with({ 'key' => 'sdfg' })
+    end
+  end
+
+  describe 'another account with ssh keys' do
+    let( :title ) { 'otheruser' }
+    let( :params ) {{
+      'ssh_keys' => {
+        'key1' => {
+          'key' => 'asdf'
+        }
+      }
+    }}
+
+    it do
+      should contain_ssh_authorized_key( 'otheruser-key1' ).with({ 'key' => 'asdf' })
     end
   end
 end

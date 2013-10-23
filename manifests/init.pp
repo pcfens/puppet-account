@@ -207,7 +207,10 @@ define account(
       type => 'ssh-rsa',
     }
 
-    create_resources('ssh_authorized_key', $ssh_keys, $defaults)
+    create_resources(
+      'ssh_authorized_key',
+      add_prefix_to_keys($ssh_keys, $title),
+      $defaults)
   }
 }
 
