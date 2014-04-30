@@ -148,5 +148,42 @@ describe 'account' do
       should contain_file( "#{title}_sshdir" ).with({ 'group' => params[:gid] })
     end
   end
+
+  describe 'account with ssh keys' do
+    let( :title ) { 'user' }
+    let( :params ) {{
+      'ssh_keys' => {
+        'key1' => {
+          'key' => 'asdf'
+        },
+        'key2' => {
+          'key' => 'sdfg'
+        }
+      }
+    }}
+
+    it do
+      should contain_ssh_authorized_key( 'user-key1' ).with({ 'key' => 'asdf' })
+    end
+
+    it do
+      should contain_ssh_authorized_key( 'user-key2' ).with({ 'key' => 'sdfg' })
+    end
+  end
+
+  describe 'another account with ssh keys' do
+    let( :title ) { 'otheruser' }
+    let( :params ) {{
+      'ssh_keys' => {
+        'key1' => {
+          'key' => 'asdf'
+        }
+      }
+    }}
+
+    it do
+      should contain_ssh_authorized_key( 'otheruser-key1' ).with({ 'key' => 'asdf' })
+    end
+  end
 end
 

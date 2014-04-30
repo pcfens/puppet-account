@@ -3,6 +3,6 @@
 
 /bin/*
 /pkg/*
-/.ci/*
 /vendor/
 /spec/fixtures/
+/.travis/*

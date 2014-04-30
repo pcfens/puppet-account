@@ -1,4 +1,8 @@
 ---
 fixtures:
+  repositories:
+    stdlib:
+      repo: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+      ref: "origin/3.x"
   symlinks:
     account: "#{source_dir}"
