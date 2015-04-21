@@ -223,7 +223,7 @@ define account(
     $defaults = {
       ensure => $ensure,
       user   => $username,
-      type => 'ssh-rsa',
+      'type' => 'ssh-rsa',
     }
 
     create_resources(
@@ -232,4 +232,3 @@ define account(
       $defaults)
   }
 }
-
