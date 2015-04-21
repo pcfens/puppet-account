@@ -101,7 +101,7 @@
 #
 # Copyright 2013 Tray Torrance, unless otherwise noted
 #
-define account(
+define accounts::account(
   $username = $title, $password = '!', $shell = '/bin/bash',
   $manage_home = true, $home_dir = undef,  $home_dir_perms = '0750',
   $create_group = true, $system = false, $uid = undef, $ssh_key = undef,
